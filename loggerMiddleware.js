@@ -3,6 +3,8 @@
 // Date: 07/14/2024
 
 // logger middleware
-exports.logUser((req, res, next) => {
-    console.log(req.time() + ": New user has logged on");
-});
+exports.logUser = async (req, res, next) => {
+    req.time = new Date(Date.now()).toString();
+    console.log(req.time + ": New user has logged on");
+    next();
+};
